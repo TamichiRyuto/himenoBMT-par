@@ -75,6 +75,7 @@ int main(int argc, char *argv[]) {
   int imax, jmax, kmax, mimax, mjmax, mkmax, msize[3];
   float gosa, target;
   double cpu0, cpu1, cpu, xgflops2, score, flop;
+  char size[10];
 
   if (argc >= 2) {
     strcpy(size, argv[1]);

@@ -71,7 +71,8 @@ float omega = 0.8;
 Matrix a, b, c, p, bnd, wrk1, wrk2;
 
 int main(int argc, char* argv[]) {
-  int i, j, k, nn;
+  // int i, j, k, nn;
+  int nn;
   int imax, jmax, kmax, mimax, mjmax, mkmax, msize[3];
   float gosa, target;
   double cpu0, cpu1, cpu, flop;
@@ -144,7 +145,8 @@ int main(int argc, char* argv[]) {
   cpu = cpu1 - cpu0;
   flop = fflop(imax, jmax, kmax);
 
-  printf(" MFLOPS: %f time(s): %f %e\n\n", mflops(nn, cpu, flop), cpu, gosa);
+  // printf(" MFLOPS: %f time(s): %f %e\n\n", mflops(nn, cpu, flop), cpu, gosa);
+  printf(" GFLOPS: %f time(s): %f %e\n\n", mflops(nn, cpu, flop) / 1000, cpu, gosa);
 
   nn = (int)(target / (cpu / 3.0));
 
@@ -160,8 +162,9 @@ int main(int argc, char* argv[]) {
 
   printf(" Loop executed for %d times\n", nn);
   printf(" Gosa : %e \n", gosa);
-  printf(" MFLOPS measured : %f\tcpu : %f\n", mflops(nn, cpu, flop), cpu);
-  // printf(" Score based on Pentium III 600MHz using Fortran 77: %f\n", mflops(nn, cpu, flop) / 82, 84);
+  // printf(" MFLOPS measured : %f\tcpu : %f\n", mflops(nn, cpu, flop), cpu);
+  printf(" GFLOPS measured : %f\tcpu : %f\n", mflops(nn, cpu, flop) / 1000, cpu);
+  printf(" Score based on Pentium III 600MHz using Fortran 77: %f\n", mflops(nn, cpu, flop) / 82.84);
 
   /*
    *   Matrix free
@@ -250,8 +253,9 @@ void mat_set(Matrix* Mat, int l, float val) {
 }
 
 void mat_set_init(Matrix* Mat) {
-  int i, j, k, l;
-  float tt;
+  // int i, j, k, l;
+  int i, j, k;
+  // float tt;
 
   for (i = 0; i < Mat->mrows; i++)
     for (j = 0; j < Mat->mcols; j++)

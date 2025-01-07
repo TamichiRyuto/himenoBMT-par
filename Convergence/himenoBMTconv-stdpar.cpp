@@ -159,7 +159,7 @@ int main(int argc, char* argv[]) {
   printf(" GFLOPS: %f time(s): %f error: %e\n\n", gflops(nn, cpu, flop), cpu, gosa);
 
   /* Start the actual mesurement */
-  nnmax = argc > 2 ? std::atoi(argv[2]) : 1000;
+  nnmax = MAX_ITER;
   nn = 0;
 
   printf(" Now, start the actual measurement process.\n");
